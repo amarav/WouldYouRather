@@ -1,5 +1,5 @@
 import {createStore, combineReducers} from 'redux';
-import middleware from './middleware'
+import middleware from '../middleware'
 import authedUser from './authedUser'
 import users from './users'
 import questions from './questions'
