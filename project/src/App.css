@@ -1,24 +1,136 @@
-.App {
-  text-align: center;
+.row-header{
+    margin:0px auto;
+    padding:0px auto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.row-content {
+    margin:0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height:400px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.footer{
+    background-color: #ff6600;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
+.jumbotron {
+    padding:70px 30px 70px 30px;
+    margin:0px auto;
+    background: #332825 ;
+    color:floralwhite;
 }
 
-.App-intro {
-  font-size: large;
+address{
+    font-size:80%;
+    margin:0px;
+    color:#0f0f0f;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.navbar-dark {
+    background-color: #ff6600;
 }
+
+.mycard-footer{    
+    background-color: #d6d2d0;    
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.mycard-header{        
+    background-color: #d6d2d0;  
+}
+
+.mycard-button {
+    background-color: transparent;
+    color: #ff6600;
+    margin-bottom: 0;    
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.mycard-button:hover{
+    color: #642b05;
+}
+
+.mycard-col-3{
+    padding-left: 0.25rem;
+    flex: 1 0 23%;
+}
+
+.my-media-heading{
+    font-size: 1rem;
+}
+.mysmcard
+{
+  width: 300px;
+  height:100px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  background-color: #d9dfe4;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.mysmcard:hover{
+    background-color: #b5d1e7;
+}
+
+.mysmcard-image
+{
+  width:100px;
+  height: 100px;
+}
+
+.mysmcard-content
+{
+  font-size:1rem;
+  font-weight:400;
+  width: 100%;
+  padding: 10px 10px;
+}
+
+.mytable {
+    counter-reset: rowNumber;
+  }
+  
+.mytable tr::before {
+    display: table-cell;
+    counter-increment: rowNumber;
+    content: counter(rowNumber);
+    padding-right: 0.3em;
+    text-align: right;
+  }
+
+  .mya {
+    color: #ffff;
+    text-decoration: none;
+    background-color: transparent;
+  }
+  .mya:hover {
+    color: #c04b08;
+    text-decoration: underline;
+  }
+
+
+.myimg-thumbnail {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .mypost-thumbnail{
+    width: 185px;
+    height: 170px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-shrink: 0;  
+  }
