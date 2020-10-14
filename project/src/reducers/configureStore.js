@@ -10,6 +10,7 @@ export const ConfigureStore = () => {
         combineReducers({
         users,
         questions,
+        authedUser,
         }),       
         middleware
     );
