@@ -11,8 +11,7 @@ class Main extends Component
     this.props.dispatch(handleInitialData())
   }
   render()
-  {
-    
+  {    
     const HomePage = () => {
       return(
          <Home />
@@ -34,9 +33,9 @@ class Main extends Component
 
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({ users }) {
   return {
-   
+    users,
   }
 }
 

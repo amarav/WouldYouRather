@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component ,useState } from "react";
+import Example from './Login'
 import {
   Nav,
   Navbar,
@@ -28,9 +29,7 @@ class Header extends Component {
       isModalOpen: true,
     };
   }
-
-
-
+  
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
@@ -47,8 +46,11 @@ class Header extends Component {
     );
     event.preventDefault();
   }
-
+  
   render() {
+    
+    const {users} = this.props
+    
     return (
       <div>
         <React.Fragment>
@@ -89,12 +91,12 @@ class Header extends Component {
               <Form onSubmit={this.handleLogin}>
                 <FormGroup>
                   <Label htmlFor="username">Username</Label>
-                  <Input
-                    type="text"
-                    id="username"
-                    name="username"
-                    innerRef={(input) => (this.username = input)}
-                  />
+                   <Input type="select">
+                      <option>Tyler</option>
+                      <option>Joe</option>
+                      <option>Default Select</option>
+                      <option>Default Select</option>
+                   </Input>                   
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="password">Password</Label>
@@ -111,6 +113,7 @@ class Header extends Component {
               </Form>
             </ModalBody>
           </Modal>
+
         </React.Fragment>       
       </div>
     );
