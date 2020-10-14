@@ -1,6 +1,7 @@
 import React,{Component,Fragment} from 'react';
-import Header from './Header.js'
-import Home from './Home.js'
+import Header from './Header'
+import Home from './Home'
+import NewQuestion from './NewQuestion'
 import { handleInitialData } from '../actions/shared'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -23,6 +24,7 @@ class Main extends Component
     <Header />
     <Switch>    
        <Route path='/home' component={HomePage} /> 
+       <Route path='/new' component={NewQuestion} /> 
        <Redirect to="/home" />
     </Switch> 
     </Fragment>
