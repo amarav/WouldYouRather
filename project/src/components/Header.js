@@ -1,7 +1,6 @@
-import React, { Component ,useState } from "react";
+import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser'
-import Example from './Login'
 import {
   Nav,
   Navbar,
@@ -9,56 +8,25 @@ import {
   Collapse,
   NavItem,
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Form,
-  FormGroup,
-  Input,
-  Label,
+  Label
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import "../css/styles.css";
 
 class Header extends Component {
+  
   constructor(props) {
     super(props);
-
-    this.toggleModal = this.toggleModal.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.onNameChange = this.onNameChange.bind(this);
-
-    this.state = {
-      isModalOpen: true,
-      userName:"",
-    };
+    this.handleLogout = this.handleLogout.bind(this);
   }
   
-  toggleModal() {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen,
-    });
-  }
-
-  handleLogin(event) {
-    this.toggleModal();  
-    this.props.dispatch(setAuthedUser(this.state.userName));
-    event.preventDefault();
+  handleLogout() {  
+    this.props.dispatch(setAuthedUser(null));
   }
   
-  onNameChange(event){  
-    this.setState({
-      userName: event.target.value
-    });  
-  }
-  
-  render() {
-    
-    const {users,authedUser} = this.props
-    console.log(users)
-    
-    const username = users.filter( user => user.id === authedUser )
-    console.log(username)
+  render() {    
+    const {users,authedUser} = this.props    
+    const username = users.filter( user => user.id === authedUser ).map(user => user.name)[0] 
     
     return (
       <div>
@@ -68,7 +36,6 @@ class Header extends Component {
               <NavbarBrand className="mr-auto" href="/">              
               Would You Rather?              
               </NavbarBrand>
-              <Collapse isOpen={this.state.isNavOpen} navbar>
                 <Nav navbar className="text-uppercase ml-auto">
                   <NavItem>
                     <NavLink className="nav-link" to="/home"> Home
@@ -83,45 +50,22 @@ class Header extends Component {
                     </NavLink>
                   </NavItem> 
                   <NavItem>
-                    <NavLink className="nav-link" to="/home"> 
-                        <Button type="sub mit" value="submit" color="primary" onClick={this.handleLogin}>
+                    <NavLink className="nav-link" to="/login"> 
+                     {this.props.authedUser === null 
+                       ? (<Button type="sub mit" value="submit" color="primary" onClick={this.handleLogin}>
+                           Login
+                        </Button>)
+                       : (<Button type="sub mit" value="submit" color="primary" onClick={this.handleLogout}>
                            Logout
-                        </Button>
+                        </Button>)
+                     }
                     </NavLink>
                   </NavItem>
-                </Nav>
-              </Collapse>             
-              <Label htmlFor="hello"><h3 className="text-white">{this.state.userName}</h3></Label>              
+                </Nav>       
+              <Label htmlFor="hello"><h3 className="text-white offset-md-1">{username}</h3></Label>              
             </div>
           </Navbar>         
-
-          <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-            <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
-            <ModalBody>
-              <Form onSubmit={this.handleLogin}>
-                <FormGroup>
-                  <Label htmlFor="username">Username</Label>
-                  <Input type="select" onChange={this.onNameChange} value={this.state.userName}>
-                     {users.map((e, key) => {
-                       return <option key={key} value={e.value}>{e.id}</option>;
-                     })}
-                   </Input>                
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="password">Password</Label>
-                  <Input
-                    type="password"
-                    id="password"
-                    name="password"
-                    innerRef={(input) => (this.password = input)}
-                  />
-                </FormGroup>                
-                <Button type="submit" value="submit" color="primary">
-                  Login
-                </Button>
-              </Form>
-            </ModalBody>
-          </Modal>
+         
         </React.Fragment>       
       </div>
     );
