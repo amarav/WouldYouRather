@@ -54,8 +54,11 @@ class Header extends Component {
   
   render() {
     
-    const users = this.props.users
-    console.log(this.props.loggedUser)
+    const {users,authedUser} = this.props
+    console.log(users)
+    
+    const username = users.filter( user => user.id === authedUser )
+    console.log(username)
     
     return (
       <div>
@@ -129,7 +132,6 @@ function mapStateToProps (state) {
   return {
     users:Object.values(state.users),
     authedUser:state.authedUser,
-    loggedUser: state.users[state.authedUser],
   }
 }
 
