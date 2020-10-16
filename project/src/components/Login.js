@@ -58,11 +58,7 @@ class Login extends Component {
   render() {
     
     const {users,authedUser} = this.props
-    console.log('authed user is as below')
-    console.log(authedUser)
-    
-    console.log(users.filter( user => user.id === authedUser ).map(user => user.name)[0])
-    console.log(this.state.isModalOpen)
+    const dummy = users.filter( user => user.id === authedUser ).map(user => user.name)[0]
     
   
     

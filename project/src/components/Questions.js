@@ -4,20 +4,20 @@ import { connect } from 'react-redux';
 class Question extends Component{
   render()
   {
-    const {question} = this.props
-    
+    const {question,id} = this.props
+    console.log(question)
     return(
     <div> 
-      {question.id}
+     <p>{question.id}</p>
     </div>
     );
   }
 }
 
 function mapStatetoProps( {authedUser,questions}, {id})
-{  
+{
   return{
-     questions : questions[id]
+     question : Object.values(questions[id]),
   }
 }
 
