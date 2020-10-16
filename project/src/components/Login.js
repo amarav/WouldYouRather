@@ -11,8 +11,8 @@ import {
   Input,
   Label,
 } from "reactstrap";
-import { NavLink } from "react-router-dom";
 import "../css/styles.css";
+import {Redirect} from 'react-router-dom'
 
 class Login extends Component {
   constructor(props) {
@@ -26,6 +26,14 @@ class Login extends Component {
       isModalOpen:true,
       userName:"",
     };
+  }
+  
+  static getDerivedStateFromProps(props, state) {
+      if(!props.authedUser && !state.isModalOpen){
+        return {
+          isModalOpen: true
+        }
+    }
   }
   
   toggleModal() {
@@ -53,11 +61,13 @@ class Login extends Component {
     console.log('authed user is as below')
     console.log(authedUser)
     
-    const username = users.filter( user => user.id === authedUser ).map(user => user.name)[0]
+    console.log(users.filter( user => user.id === authedUser ).map(user => user.name)[0])
     console.log(this.state.isModalOpen)
     
+  
+    
     return (
-      <div>
+      <div>          
         <React.Fragment>
           <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
             <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
@@ -86,6 +96,7 @@ class Login extends Component {
               </Form>
             </ModalBody>
           </Modal>
+         {this.props.authedUser === null ? '' : <Redirect to='/home' />}
         </React.Fragment>       
       </div>
     );

@@ -20,10 +20,10 @@ class Main extends Component
     <Fragment>
     <Header />
     <Switch>    
-       <Route path='/home' component={Home} /> 
-       <Route path='/new' component={NewQuestion} /> 
        <Route path='/login' component={Login} /> 
-       <Redirect to="/home" />
+       <Route exact path='/home' component={Home} /> 
+       <Route exact path='/new' component={NewQuestion} /> 
+       <Redirect to="/login" />
     </Switch> 
     </Fragment>
   );

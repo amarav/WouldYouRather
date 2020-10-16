@@ -5,7 +5,6 @@ import {
   Nav,
   Navbar,
   NavbarBrand,
-  Collapse,
   NavItem,
   Button,
   Label

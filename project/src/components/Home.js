@@ -1,11 +1,100 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import classnames from 'classnames';
+import Question from './Questions'
+import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
-function Home(props) {
-    return(
-      <div className="container">
-        <h4>Home</h4>
+class Home extends Component {
+  
+   constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+  }
+  
+ state = {
+    myTab: '2'
+  };
+
+  toggle(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        myTab: tab
+      });
+    }
+  }
+
+  render() {
+    
+  const {unAnsweredQues,questions,authedUser} = this.props
+  console.log('authed user is as below')
+    console.log(authedUser)
+  return (    
+      <React.Fragment> 
+    {this.props.authedUser === null ? <Redirect to='/login'/>: 
+    <div className="col-md-8 offset-md-2">
+     <br/><br/>     
+      <Nav tabs>
+        <NavItem>
+          <NavLink
+            className={classnames({ active: this.state.myTab === '1' })}
+            onClick={() => { this.toggle('1'); }}
+          >
+            Unanswered Questions
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className={classnames({ active: this.state.myTab === '2' })}
+            onClick={() => { this.toggle('2'); }}
+          >
+            Answered Questions
+          </NavLink>
+        </NavItem>
+      </Nav>
+      <TabContent activeTab={this.state.myTab}>
+        <TabPane tabId="1">
+          <Row>
+            <Col sm="12">            
+              <div>
+{ unAnsweredQues.map( (ques,index) => 
+                   ( <Question key={index} id={ques} />)
+)}
+                 
+               
+              </div> 
+            </Col>
+          </Row>
+        </TabPane>
+        <TabPane tabId="2">
+         
+        </TabPane>
+      </TabContent>  
       </div>
-    );
+  }
+  </React.Fragment> 
+  );
+ }
 }
 
-export default Home;
+function mapStatetoProps({users,authedUser,questions}){
+  
+  
+    const user = authedUser !== null  ? users[authedUser] : ""
+    const answeredQues =  authedUser !== null  ? Object.keys(user.answers)
+                               .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+                         : "";
+    const unAnsweredQues = authedUser !== null  ? Object.keys(questions).filter(question => !answeredQues.includes(question))    
+                               .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+                           : "";
+ 
+    return {
+      users,
+      authedUser,
+      answeredQues,
+      unAnsweredQues,
+      questions
+    }
+}
+
+export default connect(mapStatetoProps)(Home);
