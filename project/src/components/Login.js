@@ -59,8 +59,8 @@ class Login extends Component {
     
     const {users,authedUser} = this.props
     const dummy = users.filter( user => user.id === authedUser ).map(user => user.name)[0]
-    
-  
+    console.log('dummy')
+    console.log(dummy)
     
     return (
       <div>          
@@ -102,7 +102,7 @@ class Login extends Component {
 function mapStateToProps (state) {
   return {
     users:Object.values(state.users),
-    authedUser:state.authedUser,
+    authedUser:state.authedUser,    
   }
 }
 

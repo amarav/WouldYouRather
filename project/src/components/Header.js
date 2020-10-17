@@ -24,8 +24,12 @@ class Header extends Component {
   }
   
   render() {    
-    const {users,authedUser} = this.props    
-    const username = users.filter( user => user.id === authedUser ).map(user => user.name)[0] 
+    const {users,authedUser,loggedUser} = this.props    
+    const username = users.filter( user => user.id === authedUser ).map(user => user.name)[0]   
+    console.log('logged user')
+    console.log(authedUser !== null ? loggedUser.avatarURL : "no user logged")
+    
+
     
     return (
       <div>
@@ -60,9 +64,18 @@ class Header extends Component {
                      }
                     </NavLink>
                   </NavItem>
-                </Nav>       
+                </Nav>   
+
+        
+{ authedUser !== null ? 
+            <div
+              className="myimg-thumbnail"
+              style={{ backgroundImage: `url(${loggedUser.avatarURL})` }}
+            ></div> : ""}
+          
               <Label htmlFor="hello"><h3 className="text-white offset-md-1">{username}</h3></Label>              
-            </div>
+            </div> 
+
           </Navbar>         
          
         </React.Fragment>       
@@ -71,12 +84,14 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps ({users,authedUser}) {
   return {
-    users:Object.values(state.users),
-    authedUser:state.authedUser,
+    users:Object.values(users),
+    authedUser,
+    loggedUser:users[authedUser]
   }
 }
+
 
 export default connect(mapStateToProps)(Header);
 

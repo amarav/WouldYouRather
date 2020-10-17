@@ -27,6 +27,7 @@ class Question extends Component {
               className="myimg-thumbnail"
               style={{ backgroundImage: `url(${author.avatarURL})` }}
             ></div>
+
           </div>
           <div className="mysmcard-content">
             <p className="font-italic">{question.author} asks...</p>
