@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import Question from './Questions'
 import { connect } from 'react-redux';
@@ -27,8 +27,7 @@ class Home extends Component {
   render() {
     
   const {unAnsweredQues,questions,authedUser} = this.props
-  console.log('authed user is as below')
-    console.log(authedUser)
+
   return (    
       <React.Fragment> 
     {this.props.authedUser === null ? <Redirect to='/login'/>: 
@@ -89,7 +88,6 @@ function mapStatetoProps({users,authedUser,questions}){
                            : "";
  
     return {
-      users,
       authedUser,
       answeredQues,
       unAnsweredQues,

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {answerQuestion} from '../actions/questions'
 
 class Question extends Component {
   constructor(props) {
@@ -14,19 +15,23 @@ class Question extends Component {
   handleOptionChange(changeEvent) {
     this.setState({
       selectedOption: changeEvent.target.value,
-    });
+    });    
+  }
+  
+  SubmitVote = (event) => {
+    const {dispatch} = this.props
+    dispatch(answerQuestion(this.props.id,this.state.selectedOption))
   }
 
   render() {
-    const { question, id, author } = this.props;
+    const { question,author } = this.props;
     return (
       <div>
         <div className="mysmcard">
           <div className="mysmcard-image">
             <div
               className="myimg-thumbnail"
-              style={{ backgroundImage: `url(${author.avatarURL})` }}
-            ></div>
+              style={{ backgroundImage: `url(${author.avatarURL})` }}/>
 
           </div>
           <div className="mysmcard-content">
@@ -54,7 +59,7 @@ class Question extends Component {
                 {question.optionTwo.text}
               </label>
             </div>
-            <button className="btn btn-info" type="submit">
+            <button className="btn btn-info" type="submit" onClick={this.SubmitVote}>
               VOTE
             </button>
           </div>

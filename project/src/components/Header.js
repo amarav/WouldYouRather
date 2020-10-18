@@ -24,12 +24,7 @@ class Header extends Component {
   }
   
   render() {    
-    const {users,authedUser,loggedUser} = this.props    
-    const username = users.filter( user => user.id === authedUser ).map(user => user.name)[0]   
-    console.log('logged user')
-    console.log(authedUser !== null ? loggedUser.avatarURL : "no user logged")
-    
-
+    const {authedUser,loggedUser} = this.props  
     
     return (
       <div>
@@ -67,14 +62,20 @@ class Header extends Component {
                 </Nav>   
 
         
+
+
 { authedUser !== null ? 
+  <div>
             <div
               className="myimg-thumbnail"
               style={{ backgroundImage: `url(${loggedUser.avatarURL})` }}
-            ></div> : ""}
+            /> 
           
-              <Label htmlFor="hello"><h3 className="text-white offset-md-1">{username}</h3></Label>              
-            </div> 
+              <Label htmlFor="hello"><h3 className="text-white offset-md-1">{loggedUser.name}</h3></Label>             
+
+</div>
+:""}
+</div> 
 
           </Navbar>         
          
@@ -86,7 +87,6 @@ class Header extends Component {
 
 function mapStateToProps ({users,authedUser}) {
   return {
-    users:Object.values(users),
     authedUser,
     loggedUser:users[authedUser]
   }
