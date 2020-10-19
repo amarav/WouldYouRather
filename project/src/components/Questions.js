@@ -4,25 +4,6 @@ import {answerQuestion} from '../actions/questions'
 import {Link} from 'react-router-dom'
 
 class Question extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleOptionChange = this.handleOptionChange.bind(this);
-    this.state = {
-      selectedOption: "optionOne",
-    };
-  }
-
-  handleOptionChange(changeEvent) {
-    this.setState({
-      selectedOption: changeEvent.target.value,
-    });    
-  }
-  
-  SubmitVote = (event) => {
-    const {dispatch} = this.props
-    dispatch(answerQuestion(this.props.id,this.state.selectedOption))
-  }
 
   render() {
     const { question,author,id} = this.props;
@@ -37,32 +18,14 @@ class Question extends Component {
           </div>
           <div className="mysmcard-content">
             <p className="font-italic">{question.author} asks...</p>
-            <p className="font-weight-bold">Would you Rather...</p>
-            <div className="radio">
+            <p className="font-weight-bold">Would you Rather...</p>            
               <label>
-                <input
-                  type="radio"
-                  value="optionOne"
-                  checked={this.state.selectedOption === "optionOne"}
-                  onChange={this.handleOptionChange}
-                />
-                {question.optionOne.text}
+                 {question.optionOne.text}
               </label>
-            </div>
-            <div className="radio">
+                <br/>  OR  <br/>
               <label>
-                <input
-                  type="radio"
-                  value="optionTwo"
-                  checked={this.state.selectedOption === "optionTwo"}
-                  onChange={this.handleOptionChange}
-                />
                 {question.optionTwo.text}
-              </label>
-            </div>
-            <button className="btn btn-info" type="submit" onClick={this.SubmitVote}>
-              VOTE
-            </button>
+              </label>  
           </div>
         </div>    
        </Link>
