@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {answerQuestion} from '../actions/questions'
+import {Link} from 'react-router-dom'
 
 class Question extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class Question extends Component {
 
     this.handleOptionChange = this.handleOptionChange.bind(this);
     this.state = {
-      selectedOption: "option1",
+      selectedOption: "optionOne",
     };
   }
 
@@ -24,15 +25,15 @@ class Question extends Component {
   }
 
   render() {
-    const { question,author } = this.props;
+    const { question,author,id} = this.props;
     return (
-      <div>
+      <div>      
+        <Link to ={`/questions/${id}`}>
         <div className="mysmcard">
           <div className="mysmcard-image">
             <div
               className="myimg-thumbnail"
               style={{ backgroundImage: `url(${author.avatarURL})` }}/>
-
           </div>
           <div className="mysmcard-content">
             <p className="font-italic">{question.author} asks...</p>
@@ -41,8 +42,8 @@ class Question extends Component {
               <label>
                 <input
                   type="radio"
-                  value="option1"
-                  checked={this.state.selectedOption === "option1"}
+                  value="optionOne"
+                  checked={this.state.selectedOption === "optionOne"}
                   onChange={this.handleOptionChange}
                 />
                 {question.optionOne.text}
@@ -52,8 +53,8 @@ class Question extends Component {
               <label>
                 <input
                   type="radio"
-                  value="option2"
-                  checked={this.state.selectedOption === "option2"}
+                  value="optionTwo"
+                  checked={this.state.selectedOption === "optionTwo"}
                   onChange={this.handleOptionChange}
                 />
                 {question.optionTwo.text}
@@ -63,7 +64,8 @@ class Question extends Component {
               VOTE
             </button>
           </div>
-        </div>
+        </div>    
+       </Link>
       </div>
     );
   }

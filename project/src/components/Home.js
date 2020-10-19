@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
-import Question from './Questions'
+import Questions from './Questions'
+import QuestionDetails from './QuestionDetails'
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
@@ -13,7 +14,7 @@ class Home extends Component {
   }
   
  state = {
-    myTab: '2'
+    myTab: '1'
   };
 
   toggle(tab) {
@@ -57,7 +58,7 @@ class Home extends Component {
             <Col sm="12">            
               <div>
 { unAnsweredQues.map( (ques,index) => 
-                   ( <Question key={index} id={ques} />)
+                   ( <Questions key={index} id={ques} />)
 )}
                  
                
