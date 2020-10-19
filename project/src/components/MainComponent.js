@@ -4,6 +4,7 @@ import Home from './Home'
 import NewQuestion from './NewQuestion'
 import QuestionDetails from './QuestionDetails'
 import Login from './Login'
+import MissingErr from './MissingErr'
 import { handleInitialData } from '../actions/shared'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -25,6 +26,7 @@ class Main extends Component
        <Route exact path='/home' component={Home} /> 
        <Route exact path='/new' component={NewQuestion} /> 
        <Route path="/questions/:id" component={QuestionDetails}/>
+       <Route exact path="/MissingErr" component={MissingErr} />
        <Redirect to="/login" />
     </Switch> 
     </Fragment>
