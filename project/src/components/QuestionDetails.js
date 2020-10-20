@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {answerQuestion} from '../actions/questions'
 import MissingErr from './MissingErr'
-import {withRouter} from 'react-router-dom'
+import {withRouter,Redirect} from 'react-router-dom'
 
 
 class QuestionDetails extends Component{
@@ -24,6 +24,7 @@ class QuestionDetails extends Component{
   SubmitVote = (event) => {
     const {dispatch} = this.props
     dispatch(answerQuestion(this.props.id,this.state.selectedOption))
+    this.props.history.push('/home')
   }
   
   render(){    

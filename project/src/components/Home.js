@@ -3,6 +3,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap
 import classnames from 'classnames';
 import Questions from './Questions'
 import QuestionDetails from './QuestionDetails'
+import AnsweredQues from './AnsweredQues'
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
@@ -27,7 +28,7 @@ class Home extends Component {
 
   render() {
     
-  const {unAnsweredQues,questions,authedUser} = this.props
+  const {unAnsweredQues,questions,authedUser,answeredQues} = this.props
 
   return (    
       <React.Fragment> 
@@ -67,7 +68,9 @@ class Home extends Component {
           </Row>
         </TabPane>
         <TabPane tabId="2">
-         
+         { answeredQues.map( (ques,index) => 
+                   ( <AnsweredQues key={index} id={ques} />)
+)}
         </TabPane>
       </TabContent>  
       </div>
