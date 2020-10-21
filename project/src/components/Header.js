@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { setAuthedUser } from '../actions/authedUser'
+import { setAuthedUser,logoutAuthedUser } from '../actions/authedUser'
 import {
   Nav,
   Navbar,
@@ -20,7 +20,7 @@ class Header extends Component {
   }
   
   handleLogout() {  
-    this.props.dispatch(setAuthedUser(null));
+    this.props.dispatch(logoutAuthedUser());
   }
   
   render() {    
@@ -44,7 +44,7 @@ class Header extends Component {
                     </NavLink>
                   </NavItem> 
                   <NavItem>
-                    <NavLink className="nav-link" to="/home"> LeaderBoard
+                    <NavLink className="nav-link" to="/Leaderboard"> LeaderBoard
                     </NavLink>
                   </NavItem> 
                   <NavItem>
@@ -64,7 +64,7 @@ class Header extends Component {
         
 
 
-{ authedUser !== null ? 
+
   <div>
             <div
               className="myimg-thumbnail"
@@ -74,7 +74,7 @@ class Header extends Component {
               <Label htmlFor="hello"><h3 className="text-white offset-md-1">{loggedUser.name}</h3></Label>             
 
 </div>
-:""}
+
 </div> 
 
           </Navbar>         
@@ -87,7 +87,6 @@ class Header extends Component {
 
 function mapStateToProps ({users,authedUser}) {
   return {
-    authedUser,
     loggedUser:users[authedUser]
   }
 }

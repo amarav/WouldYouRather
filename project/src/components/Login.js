@@ -62,6 +62,10 @@ class Login extends Component {
     console.log('dummy')
     console.log(dummy)
     
+    if (this.props.loginUser) {
+        return <Redirect to={this.props.location.state.returnPath} />
+    }
+    
     return (
       <div>          
         <React.Fragment>
@@ -99,10 +103,10 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps ({users,authedUser}) {
   return {
-    users:Object.values(state.users),
-    authedUser:state.authedUser,    
+    users:Object.values(users),
+    authedUser,
   }
 }
 
