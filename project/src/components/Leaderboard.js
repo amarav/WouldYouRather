@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {Label, Media} from 'reactstrap'
 import {Redirect} from 'react-router-dom'
 
 class Leaderboard extends Component{
@@ -22,22 +21,26 @@ class Leaderboard extends Component{
         <div className="col-md-8 offset-md-2">
      <br/><br/>     
      { users.map( user => (
-        <Media key={user.id}>
-          <Media object src={user.avatarURL} className="myimg-thumbnail" />
-          <Media heading>
-                        {user.name}
-                    </Media>
-                    <div className="float-left">
-                        <Label for="asked">Asked:</Label><span id="asked">{user.questions.length}</span>
-                    </div>
-                    <div className="float-right">
-                        <Label for="answered">Answered:</Label><span id="answered">{Object.keys(user.answers).length}</span>
-                    </div>
-                   <div className="float-right">
-                        <Label for="answered">Total score:</Label><span id="answered">{user.questions.length + Object.keys(user.answers).length}</span>
-                    </div>
-          
-        </Media>    
+       
+      
+         <div className="card">
+          <div className="mysmcard-image">
+            <div
+              className="myimg-thumbnail"
+              style={{ backgroundImage: `url(${user.avatarURL})` }}/>  
+          </div>
+ <div className="card-body">
+          <div className="text-center"><h2>{user.name}</h2></div>          
+<ul className="list-group list-group-flush w-100 align-items-stretch">
+            <li className="text-center d-inline-block">Asked questions : {user.questions.length}</li>
+            <li className="text-center d-inline-block">Answered questions :  {Object.keys(user.answers).length}</li>
+            <li className="text-center d-inline-block"><h3>Total score:  {user.questions.length + Object.keys(user.answers).length}</h3></li>
+        </ul>
+</div>
+         </div>
+
+
+
      ))}
   </div>
     </React.Fragment>

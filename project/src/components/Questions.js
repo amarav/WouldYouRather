@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {answerQuestion} from '../actions/questions'
 import {Link,Redirect} from 'react-router-dom'
 
 class Question extends Component {
@@ -18,7 +17,7 @@ class Question extends Component {
     
     return (
       <div>      
-        <Link to ={`/questions/${id}`}>
+        <Link to={`/questions/${id}`}>
         <div className="mysmcard">
           <div className="mysmcard-image">
             <div

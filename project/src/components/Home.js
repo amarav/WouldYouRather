@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import Questions from './Questions'
-import QuestionDetails from './QuestionDetails'
 import AnsweredQues from './AnsweredQues'
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
@@ -28,7 +27,7 @@ class Home extends Component {
 
   render() {
     
-  const {unAnsweredQues,questions,authedUser,answeredQues} = this.props
+  const {unAnsweredQues,authedUser,answeredQues} = this.props
 
   if(!authedUser)
   {

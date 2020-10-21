@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {answerQuestion} from '../actions/questions'
-import {Link} from 'react-router-dom'
 import { Progress } from 'reactstrap';
 
 class AnsweredQues extends Component {
 
   render() {
-    const { question,author,id,voted,percentOne,percentTwo,total } = this.props;
+    const { question,author,voted,percentOne,percentTwo,total } = this.props;
     return (
       <div>   
         <div className="mysmcard">

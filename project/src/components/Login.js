@@ -24,7 +24,7 @@ class Login extends Component {
     
     this.state = {   
       isModalOpen:true,
-      userName:"",
+      userName:"sarahedo",
     };
   }
   

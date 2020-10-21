@@ -1,9 +1,6 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {answerQuestion} from '../actions/questions'
-import MissingErr from './MissingErr'
-import {withRouter} from 'react-router-dom'
-
 
 class QuestionDetails extends Component{
   constructor(props) {

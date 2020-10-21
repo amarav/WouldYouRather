@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { setAuthedUser,logoutAuthedUser } from '../actions/authedUser'
+import { logoutAuthedUser } from '../actions/authedUser'
 import {
   Nav,
   Navbar,
@@ -24,7 +24,7 @@ class Header extends Component {
   }
   
   render() {    
-    const {authedUser,loggedUser} = this.props  
+    const {loggedUser} = this.props  
     
     return (
       <div>
