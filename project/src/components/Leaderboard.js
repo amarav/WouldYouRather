@@ -7,7 +7,7 @@ class Leaderboard extends Component{
   render(){
     
     const {users,authedUser} = this.props
-   
+   console.log(this.props.authedUser)
     if(!authedUser)
     {
       return <Redirect to={ { pathname:'/login',
@@ -23,7 +23,7 @@ class Leaderboard extends Component{
      { users.map( user => (
        
       
-         <div className="card">
+         <div key={user.id} className="card">
           <div className="mysmcard-image">
             <div
               className="myimg-thumbnail"

@@ -29,22 +29,18 @@ class Login extends Component {
   }
   
   static getDerivedStateFromProps(props, state) {
-    
-    const [first] = props.users
-    console.log('inside derived')
-    console.log(props.users)
+      const selectedUser = state.userName === '' && props.users && props.users.length !== 0 ? props.users[0].id : state.userName; 
       if(!props.authedUser && !state.isModalOpen){
         return {
+          userName: selectedUser,
           isModalOpen: true
         }
-    }    
+      }
+      return {
+        userName: selectedUser,
+      } 
   }
   
- componentDidMount() {
-    const [first] = this.props.users
-    console.log('inside Comp DM')
-    console.log(this.props.users)
-  }
   
   toggleModal() {
     this.setState({
