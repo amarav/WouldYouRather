@@ -30,9 +30,17 @@ class Home extends Component {
     
   const {unAnsweredQues,questions,authedUser,answeredQues} = this.props
 
+  if(!authedUser)
+  {
+      return <Redirect to={ { pathname:'/login',
+                              state: {
+                               returnPath:'/home'
+                              }   
+                          }}/>
+  }
+
   return (    
-      <React.Fragment> 
-    {this.props.authedUser === null ? <Redirect to='/login'/>: 
+   <React.Fragment> 
     <div className="col-md-8 offset-md-2">
      <br/><br/>     
       <Nav tabs>

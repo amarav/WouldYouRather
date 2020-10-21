@@ -8,13 +8,19 @@ class Leaderboard extends Component{
   render(){
     
     const {users,authedUser} = this.props
-    
+   
     if(!authedUser)
     {
-      return <Redirect to='/login' />
+      return <Redirect to={ { pathname:'/login',
+                              state: {
+                               returnPath:'/LeaderBoard'
+                              }   
+                          }}/>
     }    
     return(
     <React.Fragment>
+        <div className="col-md-8 offset-md-2">
+     <br/><br/>     
      { users.map( user => (
         <Media key={user.id}>
           <Media object src={user.avatarURL} className="myimg-thumbnail" />
@@ -33,6 +39,7 @@ class Leaderboard extends Component{
           
         </Media>    
      ))}
+  </div>
     </React.Fragment>
     )
   }  

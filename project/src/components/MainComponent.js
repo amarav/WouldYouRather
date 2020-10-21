@@ -26,7 +26,7 @@ class Main extends Component
       <Header />
     }
       <Switch>    
-       <Route path='/login' component={Login} /> 
+       <Route exact path='/login' component={Login} /> 
        <Route exact path='/home' component={Home} /> 
        <Route exact path='/new' component={NewQuestion} /> 
        <Route path="/questions/:id" component={QuestionDetails}/>

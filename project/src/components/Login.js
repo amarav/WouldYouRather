@@ -29,11 +29,21 @@ class Login extends Component {
   }
   
   static getDerivedStateFromProps(props, state) {
+    
+    const [first] = props.users
+    console.log('inside derived')
+    console.log(props.users)
       if(!props.authedUser && !state.isModalOpen){
         return {
           isModalOpen: true
         }
-    }
+    }    
+  }
+  
+ componentDidMount() {
+    const [first] = this.props.users
+    console.log('inside Comp DM')
+    console.log(this.props.users)
   }
   
   toggleModal() {
@@ -60,10 +70,18 @@ class Login extends Component {
     const {users,authedUser} = this.props
     const dummy = users.filter( user => user.id === authedUser ).map(user => user.name)[0]
     console.log('dummy')
-    console.log(dummy)
-    
-    if (this.props.loginUser) {
+    if (this.props.authedUser) {
+      if(!this.props.location.state) {
+        return <Redirect to={ { pathname:'/home',
+                              state: {
+                               returnPath:'/home'
+                              }   
+                          }}/>
+      }
+      else
+      {        
         return <Redirect to={this.props.location.state.returnPath} />
+      }
     }
     
     return (
@@ -96,7 +114,11 @@ class Login extends Component {
               </Form>
             </ModalBody>
           </Modal>
-         {this.props.authedUser === null ? '' : <Redirect to='/home' />}
+          {this.props.authedUser === null ? '' : <Redirect to={ { pathname:'/home',
+                              state: {
+                               returnPath:'/home'
+                              }   
+                          }}/>}
         </React.Fragment>       
       </div>
     );

@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {answerQuestion} from '../actions/questions'
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 
 class Question extends Component {
 
   render() {
-    const { question,author,id} = this.props;
+    const { question,author,id,authedUser } = this.props;
+    if(!authedUser)
+    {
+      return <Redirect to={ { pathname:'/login',
+                              state: {
+                               returnPath:'/questions'
+                              }   
+                          }}/>
+    }
+    
     return (
       <div>      
         <Link to ={`/questions/${id}`}>
@@ -40,6 +49,7 @@ function mapStatetoProps({ authedUser, questions, users }, { id }) {
     question,
     id,
     author: users[question.author],
+    authedUser,
   };
 }
 
