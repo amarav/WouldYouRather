@@ -14,13 +14,20 @@ class NewQuestion extends Component{
   
   handleInputChange = (event) => {
     event.preventDefault()
-    const {id,value} = event
+    const {id,value} = event.target
     this.setState( () => ({[id]:[value]}))
+  }
+
+  handleSubmit = (event) => {
+    const {optionOneText,optionTwoText} = this.state
+    event.preventDefault()
+    this.props.addQuestion(optionOneText,optionTwoText)
+    this.setState({gotoHome:true})    
   }
 
   render(){
     
-    const {optionOneText,optionTwoText,gotoHome } = this.state
+   const {optionOneText,optionTwoText,gotoHome } = this.state
    if(!this.props.authedUser){
      return <Redirect to={{
                             pathname :"/login",
@@ -36,7 +43,9 @@ class NewQuestion extends Component{
    }
     
   return (
-    <Form className="col-md-4 offset-md-4">      
+    <div>
+    <Form className="col-md-4 offset-md-4" onSubmit={this.handleSubmit}>  
+
       <section className="page-section bg-light">
             <div className="container-fluid">
               <div className="text-center">
@@ -53,22 +62,25 @@ class NewQuestion extends Component{
                 </div>
             </div>
     <br/>
+ 
       <FormGroup row>
         <Col className="offset-md-1" sm={10}>
-          <Input type="text"  id="optionOneText"  placeholder="Enter Option one text here"  value={optionOneText} onChange={this.handleInputChange}/>
+          <Input type="text"  id="optionOneText"  placeholder="Enter Option one text here" 
+onChange={this.handleInputChange}/>
         </Col>
       </FormGroup>
       <Label className="text-center offset-md-5" >OR</Label>
       <FormGroup row>
         <Col className="offset-md-1" sm={10}>
-          <Input type="text"  id="optionTwoText" placeholder="Enter Option two text here" value={optionTwoText} onChange={this.handleInputChange}/>
+          <Input type="text"  id="optionTwoText" placeholder="Enter Option two text here" 
+onChange={this.handleInputChange}/>
         </Col>
       </FormGroup>
 <br/>
-         <Button color="secondary" size="lg" block>Submit</Button>
+         <Button color="secondary" size="lg" block disabled={optionOneText==='' || optionTwoText===''}>Submit</Button>
           </section>
-
-    </Form>
+</Form>
+</div>
   );
  }
 }
@@ -79,5 +91,12 @@ function mapStateToProps({authedUser}) {
   }  
 }
 
+function mapDispatchToProps(dispatch){
+  return {
+    addQuestion : (optionOnetext,optionTwotext) => {
+         dispatch(addNewQuestion(optionOnetext,optionTwotext))
+    }
+  }
+}
 
-export default connect(mapStateToProps)(NewQuestion)
+export default connect(mapStateToProps,mapDispatchToProps)(NewQuestion)
