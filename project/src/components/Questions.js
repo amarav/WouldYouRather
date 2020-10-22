@@ -17,14 +17,14 @@ class Question extends Component {
     
     return (
       <div>      
-        <Link to={`/questions/${id}`}>
-        <div className="mysmcard">
-          <div className="mysmcard-image">
+        
+        <div className="card">
+          <div className="fullcard-image">
             <div
-              className="myimg-thumbnail"
+              className="fullcard-avatar"
               style={{ backgroundImage: `url(${author.avatarURL})` }}/>
           </div>
-          <div className="mysmcard-content">
+          <div className="card-body text-center">
             <p className="font-italic">{question.author} asks...</p>
             <p className="font-weight-bold">Would you Rather...</p>            
               <label>
@@ -34,9 +34,15 @@ class Question extends Component {
               <label>
                 {question.optionTwo.text}
               </label>  
-          </div>
+<br/>
+        <Link to={`/questions/${id}`}>
+<label>
+Answer question
+</label>
+</Link>       
+</div>
         </div>    
-       </Link>
+       
       </div>
     );
   }

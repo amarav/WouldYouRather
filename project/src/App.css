@@ -83,7 +83,8 @@ address{
 .mysmcard-image
 {
   width:100px;
-  height: 100px;
+  height: 100px;  
+  padding: 50px 50px;
 }
 
 .mysmcard-content
@@ -116,6 +117,47 @@ address{
     text-decoration: underline;
   }
 
+.fullcard-image
+{
+  width:100px;
+  height: 100px;  
+  padding: 50px 50px;
+}
+
+.score-card{
+ text-align:right;
+ padding-right:100px;   
+}
+
+.fullcard-body {
+  width:00px;
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;  
+  font-size: 0.85rem;
+}
+
+.fullcard-avatar {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+.fullcard{  
+  width: 600px;
+  height:300px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  background-color: #d9dfe4;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
 
 .myimg-thumbnail {
     width: 100px;
@@ -134,3 +176,16 @@ address{
     background-size: cover;
     flex-shrink: 0;  
   }
+
+.mycolumn {
+  float: left;
+  width: 33.33%;
+  padding-left:10px;
+}
+
+/* Clear floats after the columns */
+.myrow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
