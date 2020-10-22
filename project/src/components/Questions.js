@@ -21,14 +21,14 @@ class Question extends Component {
     return (
       <div>
         <div className="card">
-          <div class="myrow">
-            <div class="mycolumn">
+          <div className="myrow">
+            <div className="mycolumn">
               <div
                 className="fullcard-avatar"
                 style={{ backgroundImage: `url(${author.avatarURL})` }}
               />
             </div>
-            <div class="mycolumn">
+            <div className="mycolumn">
               <div className="card-body text-center">
                 <h2 className="font-italic">{question.author} asks...</h2>
                 <p className="font-weight-bold">Would you Rather...</p>
@@ -38,7 +38,7 @@ class Question extends Component {
                 <br />
               </div>
             </div>
-            <div class="mycolumn">
+            <div className="mycolumn">
               <div className="card-body text-center">
                 <Link to={`/questions/${id}`}>
                   <label>Answer question</label>
