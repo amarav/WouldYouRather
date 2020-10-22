@@ -145,6 +145,7 @@ address{
     background-size: cover;
     border-radius: 50%;
     flex-shrink: 0;
+    padding-top:20px;
   }
 
 .fullcard{  
