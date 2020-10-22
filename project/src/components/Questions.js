@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 
 class Question extends Component {
+  
   render() {
     const { question, author, id, authedUser } = this.props;
+    
     if (!authedUser) {
       return (
         <Redirect

@@ -1,12 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function MissingErr()
-{
-    return(
+function MissingErr() {
+  return (
     <div>
-      <h1>ERROR 404: No questions found !!! </h1>       
+      <h1>ERROR 404: No questions found !!! </h1>
     </div>
-    )
+  );
 }
 
-export default MissingErr
+export default MissingErr;
