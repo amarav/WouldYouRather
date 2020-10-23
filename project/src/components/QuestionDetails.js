@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { answerQuestion } from "../actions/questions";
+import { Redirect } from 'react-router-dom'
 
 class QuestionDetails extends Component {
   constructor(props) {
@@ -25,7 +26,20 @@ class QuestionDetails extends Component {
   };
 
   render() {
-    const { question, users } = this.props;
+    const { question, users, id } = this.props;
+
+    if (!this.props.authedUser) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/login",
+            state: {
+              returnPath: '/questions/' + id
+            },
+          }}
+        />
+      );
+    } 
     return (
       <div className="col-md-8 offset-md-2">
         {question ? (
@@ -85,13 +99,14 @@ class QuestionDetails extends Component {
   }
 }
 
-function mapStatetoProps({ questions, users }, props) {
+function mapStatetoProps({ questions, users,authedUser }, props) {
   const id = props.match.params.id.toString();
   const question = questions[id];
   return {
     question,
     id,
     users,
+    authedUser,
   };
 }
 

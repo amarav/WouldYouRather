@@ -21,7 +21,7 @@ class Home extends Component {
   }
 
   state = {
-    myTab: "1",
+    myTab: "2",
   };
 
   toggle(tab) {

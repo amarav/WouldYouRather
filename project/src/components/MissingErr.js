@@ -1,7 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React,{Component} from "react";
+import { connect } from "react-redux";
+import { Redirect,Link } from "react-router-dom";
 
-function MissingErr() {
+class MissingErr extends Component{
+ 
+  render(){
+   if (!this.props.authedUser) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/login",
+            state: {
+              returnPath: "/new",
+            },
+          }}
+        />
+      );
+    }
   return (
     <div>
       <h1>ERROR 404: No questions found !!! </h1>
@@ -10,5 +25,14 @@ function MissingErr() {
     </div>
   );
 }
+}
 
-export default MissingErr;
+
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+  };
+}
+
+
+export default connect(mapStateToProps)(MissingErr)
