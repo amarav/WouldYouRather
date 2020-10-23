@@ -48,11 +48,11 @@ Leaderboard
 To display the ranking, the application contains a leaderboard that available via the /leaderboard route. Each user contains the user's name, user's avatar, number of questions asked,
 number of questions the user answered, and the total score.Users are in order of descending order based on the sum of questions asked and questions answered. Ranks are decided by the total score and displayed from first rank to next and then next.
 
-##Register
+## Register
 The application has the ability to add a new user apart from the usual populated users. Clicking on register button, the login page will be redirected to the register page where the 
 new user's name,avatar and username should be submitted
 
-#APPLICATION FUNCTIONALITY
+# APPLICATION FUNCTIONALITY
 
 1. The answered and unanswered polls are both available at the root.
 2. The user can alternate between viewing answered and unanswered polls.
