@@ -3,6 +3,7 @@ import Header from './Header'
 import Home from './Home'
 import NewQuestion from './NewQuestion'
 import QuestionDetails from './QuestionDetails'
+import Register from './Register'
 import Login from './Login'
 import MissingErr from './MissingErr'
 import Leaderboard from './Leaderboard'
@@ -32,6 +33,7 @@ class Main extends Component
        <Route path="/questions/:id" component={QuestionDetails}/>
        <Route exact path="/MissingErr" component={MissingErr} />
        <Route exact path="/Leaderboard" component={Leaderboard} />
+       <Route exact path="/Register" component={Register} />
        <Redirect to="/login" />
     </Switch> 
     </Fragment>

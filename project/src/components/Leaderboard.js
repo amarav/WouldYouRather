@@ -28,15 +28,15 @@ class Leaderboard extends Component {
           <br />
           {users.map((user) => (
             <div key={user.id} className="card">
-              <div class="myrow">
-                <div class="mycolumn">
+              <div className="myrow">
+                <div className="mycolumn">
                   <div
                     className="fullcard-avatar"
                     style={{ backgroundImage: `url(${user.avatarURL})` }}
                   />{" "}
                 </div>
 
-                <div class="mycolumn">
+                <div className="mycolumn">
                   <div className="card-body">
                     <div className="text-center">
                       <h2>{user.name}</h2>
@@ -56,7 +56,7 @@ class Leaderboard extends Component {
                   </div>
                 </div>
 
-                <div class="column">
+                <div className="column">
                   <div className="card-body d-inline-block">
                     <h3>
                       Total score:{" "}

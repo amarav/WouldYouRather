@@ -12,7 +12,7 @@ import {
   Label,
 } from "reactstrap";
 import "../css/styles.css";
-import {Redirect} from 'react-router-dom'
+import {Redirect,Link} from 'react-router-dom'
 
 class Login extends Component {
   constructor(props) {
@@ -25,6 +25,7 @@ class Login extends Component {
     this.state = {   
       isModalOpen:true,
       userName:"sarahedo",
+      register:false,
     };
   }
   
@@ -33,7 +34,8 @@ class Login extends Component {
       if(!props.authedUser && !state.isModalOpen){
         return {
           userName: selectedUser,
-          isModalOpen: true
+          isModalOpen: true,
+          register:false,
         }
       }
       return {
@@ -49,7 +51,9 @@ class Login extends Component {
   }
 
   handleLogin(event) {
-    this.toggleModal();      
+    this.toggleModal();    
+    console.log('inside login')
+    console.log(this.state.register)
     this.props.dispatch(setAuthedUser(this.state.userName));
     event.preventDefault();
   } 
@@ -65,7 +69,6 @@ class Login extends Component {
     
     const {users,authedUser} = this.props
     const dummy = users.filter( user => user.id === authedUser ).map(user => user.name)[0]
-    console.log('dummy')
     if (this.props.authedUser) {
       if(!this.props.location.state) {
         return <Redirect to={ { pathname:'/home',
@@ -75,11 +78,16 @@ class Login extends Component {
                           }}/>
       }
       else
-      {        
-        return <Redirect to={this.props.location.state.returnPath} />
+      { 
+        if(this.state.register){
+          return <Redirect to='/Register' />
+        }
+        else{
+          return <Redirect to={this.props.location.state.returnPath} />
+        }       
       }
     }
-    
+
     return (
       <div>          
         <React.Fragment>
@@ -103,10 +111,12 @@ class Login extends Component {
                     name="password"
                     innerRef={(input) => (this.password = input)}
                   />
-                </FormGroup>                 
+                </FormGroup>                                 
                 <Button type="submit" value="submit" color="primary">
                   Login
-                </Button>                
+                </Button> &nbsp;&nbsp;&nbsp;
+                <Button type="submit" value="submit" color="primary" onClick={() => this.setState({ register:true})}> Register
+                </Button>                 
               </Form>
             </ModalBody>
           </Modal>
