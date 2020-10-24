@@ -12,7 +12,7 @@ import {
   Label,
 } from "reactstrap";
 import "../css/styles.css";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class Login extends Component {
   }
 
   render() {
-    const { users, authedUser } = this.props;
+    const { users } = this.props;
     if (this.props.authedUser) {
       if (!this.props.location.state) {
         return (
