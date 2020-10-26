@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { answerQuestion } from "../actions/questions";
 import { Redirect } from 'react-router-dom'
-import Results from './AnsweredQues'
 
-class QuestionDetails extends Component {
+class Poll extends Component {
   constructor(props) {
     super(props);
 
@@ -23,11 +22,10 @@ class QuestionDetails extends Component {
   SubmitVote = (event) => {
     const { dispatch } = this.props;
     dispatch(answerQuestion(this.props.id, this.state.selectedOption));
-    this.props.history.push("/home");
   };
 
   render() {
-    const { question, users, id, showResults } = this.props;
+    const { question, users, id } = this.props;
 
     if (!this.props.authedUser) {
       return (
@@ -42,7 +40,8 @@ class QuestionDetails extends Component {
       );
     } 
     return (
-      <div className="col-md-8 offset-md-2">        
+      <div className="col-md-8 offset-md-2">     
+       {question ? (
           <div className="card">
             <div className="myrow">
               <div className="mycolumn">
@@ -91,23 +90,22 @@ class QuestionDetails extends Component {
               </div>
             </div>
           </div>
-        ) 
+        )  : (
+          this.props.history.push("/MissingErr")
+        )}
       </div>
     );
   }
 }
 
-function mapStatetoProps({ questions, users,authedUser }, props) {
-  const id = props.match.params.id.toString();
-  const currentUser = users[authedUser]
+function mapStatetoProps({ questions, users,authedUser }, {id}) {
   const question = questions[id];
   return {
     question,
     id,
     users,
     authedUser,
-    showResults: Object.keys(currentUser.answers).includes(id),
   };
 }
 
-export default connect(mapStatetoProps)(QuestionDetails);
+export default connect(mapStatetoProps)(Poll);

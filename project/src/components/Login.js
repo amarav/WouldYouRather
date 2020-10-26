@@ -67,7 +67,6 @@ class Login extends Component {
 
   render() {
     const { users } = this.props;
-    console.log('here ')
     if (this.props.authedUser) {
       if (!this.props.location.state) {
         return (
