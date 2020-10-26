@@ -42,8 +42,7 @@ class QuestionDetails extends Component {
       );
     } 
     return (
-      <div className="col-md-8 offset-md-2">
-        {!showResults ? (
+      <div className="col-md-8 offset-md-2">        
           <div className="card">
             <div className="myrow">
               <div className="mycolumn">
@@ -92,9 +91,7 @@ class QuestionDetails extends Component {
               </div>
             </div>
           </div>
-        ) : (
-          <Results id={id} />
-        )}
+        ) 
       </div>
     );
   }

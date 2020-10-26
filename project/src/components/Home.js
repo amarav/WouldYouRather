@@ -10,7 +10,6 @@ import {
 } from "reactstrap";
 import classnames from "classnames";
 import Questions from "./Questions";
-import AnsweredQues from "./AnsweredQues";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 

@@ -67,6 +67,7 @@ class Login extends Component {
 
   render() {
     const { users } = this.props;
+    console.log('here ')
     if (this.props.authedUser) {
       if (!this.props.location.state) {
         return (
@@ -82,9 +83,9 @@ class Login extends Component {
       } else {
         if (this.state.register) {
           return <Redirect to="/Register" />;
-        } else {
+        } else if(this.props.location.state.returnPath) {
           return <Redirect to={this.props.location.state.returnPath} />;
-        }
+        } 
       }
     } else {
       if (this.state.register) {
