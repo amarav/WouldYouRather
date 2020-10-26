@@ -24,8 +24,9 @@ class QuestionDetails extends Component {
     return (
       <div className="col-md-8 offset-md-2">
        {question ? 
-        (showResults  ? <Results id={id} />   :  <Poll id={id} /> ) : 
-        this.props.history.push("/MissingErr")        
+        (showResults  ? <Results id={id} />   :  <Poll id={id} /> ) :
+             <Redirect to={{ pathname: "/MissingErr", }}
+        />       
         }
       </div>
     );
