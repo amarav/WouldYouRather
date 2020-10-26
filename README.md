@@ -29,28 +29,40 @@ Whenever the user types something in the address bar, the user is asked to log i
 The app begins on a login page where you will have the option to select a user from a dropdown list. Once a user is chosen, the page will be redirected to the user homepage.The user also has the option
 to Register as new user
 
+![Login Page](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/login.gif)
+
 ## Home Page
 Once the user is authenticated, the user will be able to toggle between the user's unanswered question and answered questions on his or her homepage, which is located at the root. The unanswered questions are shown by default.
 
 The chosen user's avatar will always be displayed in the navigation bar.
 
+![Home Page](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/homepage.gif)
+
 For unanswered questions, the user will be able to see  the question, who asked the question,, and the two options to choose from.
 
 For answered questions, the user will be able to see the question, the two options, the number of people who voted for that option, and the user's choice
+
+![Vote](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/vote.gif)
 
 ## New Question
 The user can also ask new questions.After clicking on 'New Question,' the application should show a form with the text 'Would You Rather' and
 inputs for creating the two options. Upon submitting the form, a new poll should be created, the user will be redirected to the user home page, and the new polling question 
 should appear in the correct category on teh home page.
 
+![New](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/newquestion.gif)
+
 ## Leaderboard
 Leaderboard
 To display the ranking, the application contains a leaderboard that available via the /leaderboard route. Each user contains the user's name, user's avatar, number of questions asked,
 number of questions the user answered, and the total score.Users are in order of descending order based on the sum of questions asked and questions answered. Ranks are decided by the total score and displayed from first rank to next and then next.
 
+![Leaderboard](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/leaderboard.gif)
+
 ## Register
 The application has the ability to add a new user apart from the usual populated users. Clicking on register button, the login page will be redirected to the register page where the 
 new user's name,avatar and username should be submitted
+
+![Register](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/register.gif)
 
 # APPLICATION FUNCTIONALITY
 

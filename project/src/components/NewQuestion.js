@@ -14,7 +14,7 @@ class NewQuestion extends Component {
   handleInputChange = (event) => {
     event.preventDefault();
     const { id, value } = event.target;
-    this.setState(() => ({ [id]: [value] }));
+    this.setState(() => ({ [id]: value }));
   };
 
   handleSubmit = (event) => {
@@ -86,7 +86,7 @@ class NewQuestion extends Component {
               color="secondary"
               size="lg"
               block
-              disabled={optionOneText === "" || optionTwoText === ""}
+              disabled={optionOneText === "" || optionTwoText === "" || optionOneText === optionTwoText }
             >
               Submit
             </Button>

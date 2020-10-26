@@ -7,8 +7,9 @@ import Register from './Register'
 import Login from './Login'
 import MissingErr from './MissingErr'
 import Leaderboard from './Leaderboard'
+import LoginCheck from './LoginCheck'
 import { handleInitialData } from '../actions/shared'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 class Main extends Component
@@ -22,20 +23,21 @@ class Main extends Component
     
   return (
     <Fragment>
-    {
-      !this.props.showHomePage &&
-      <Header />
-    }
+      {
+        !this.props.showHomePage &&
+        <Header />
+      }
       <Switch>    
-       <Route exact path='/login' component={Login} /> 
-       <Route exact path='/home' component={Home} /> 
-       <Route exact path='/new' component={NewQuestion} /> 
-       <Route path="/questions/:id" component={QuestionDetails}/>
-       <Route exact path="/MissingErr" component={MissingErr} />
-       <Route exact path="/Leaderboard" component={Leaderboard} />
-       <Route exact path="/Register" component={Register} />
-       <Redirect to="/login" />
-    </Switch> 
+        <LoginCheck>
+          <Route exact path='/login' component={Login} /> 
+          <Route exact path='/home' component={Home} /> 
+          <Route exact path='/new' component={NewQuestion} /> 
+          <Route path="/questions/:id" component={QuestionDetails}/>
+          <Route exact path="/MissingErr" component={MissingErr} />
+          <Route exact path="/Leaderboard" component={Leaderboard} />
+          <Route exact path="/Register" component={Register} />
+        </LoginCheck>
+      </Switch> 
     </Fragment>
   );
   }
