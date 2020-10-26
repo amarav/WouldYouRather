@@ -89,7 +89,7 @@ class Home extends Component {
             </TabPane>
             <TabPane tabId="2">
               {answeredQues.map((ques, index) => (
-                <AnsweredQues key={index} id={ques} />
+                <Questions key={index} id={ques} />
               ))}
             </TabPane>
           </TabContent>

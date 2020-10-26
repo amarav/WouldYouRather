@@ -5,7 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 class Question extends Component {
   
   render() {
-    const { question, author, id, authedUser } = this.props;
+    const { question, author, id, authedUser, showResults } = this.props;
     
     if (!authedUser) {
       return (
@@ -22,6 +22,7 @@ class Question extends Component {
 
     return (
       <div>
+       {question ? (
         <div className="card">
           <div className="myrow">
             <div className="mycolumn">
@@ -43,12 +44,18 @@ class Question extends Component {
             <div className="mycolumn">
               <div className="card-body text-center">
                 <Link to={`/questions/${id}`}>
-                  <label>Answer question</label>
+                  {showResults ?
+                   <label>Show results</label>
+                  : <label>Answer question</label>
+                  }
                 </Link>{" "}
               </div>
             </div>
           </div>
-        </div>
+        </div>)
+       : (
+          this.props.history.push("/MissingErr")
+        )}
       </div>
     );
   }
@@ -56,11 +63,13 @@ class Question extends Component {
 
 function mapStatetoProps({ authedUser, questions, users }, { id }) {
   const question = questions[id];
+  const currentUser = users[authedUser]
   return {
     question,
     id,
     author: users[question.author],
     authedUser,
+    showResults: Object.keys(currentUser.answers).includes(id),
   };
 }
 

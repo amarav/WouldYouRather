@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { answerQuestion } from "../actions/questions";
 import { Redirect } from 'react-router-dom'
+import AnsweredQues from './AnsweredQues'
 
 class QuestionDetails extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class QuestionDetails extends Component {
   };
 
   render() {
-    const { question, users, id } = this.props;
+    const { question, users, id, showResults } = this.props;
 
     if (!this.props.authedUser) {
       return (
@@ -42,7 +43,7 @@ class QuestionDetails extends Component {
     } 
     return (
       <div className="col-md-8 offset-md-2">
-        {question ? (
+        {!showResults ? (
           <div className="card">
             <div className="myrow">
               <div className="mycolumn">
@@ -92,7 +93,7 @@ class QuestionDetails extends Component {
             </div>
           </div>
         ) : (
-          this.props.history.push("/MissingErr")
+          <AnsweredQues id={id} />
         )}
       </div>
     );
@@ -101,12 +102,14 @@ class QuestionDetails extends Component {
 
 function mapStatetoProps({ questions, users,authedUser }, props) {
   const id = props.match.params.id.toString();
+  const currentUser = users[authedUser]
   const question = questions[id];
   return {
     question,
     id,
     users,
     authedUser,
+    showResults: Object.keys(currentUser.answers).includes(id),
   };
 }
 
