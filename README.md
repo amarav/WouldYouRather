@@ -33,16 +33,20 @@ to Register as new user
 
 ## Home Page
 Once the user is authenticated, the user will be able to toggle between the user's unanswered question and answered questions on his or her homepage, which is located at the root. The unanswered questions are shown by default.
-
 The chosen user's avatar will always be displayed in the navigation bar.
 
-![Home Page](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/homepage.gif)
+![Home Page](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/home.gif)
+
 
 For unanswered questions, the user will be able to see  the question, who asked the question,, and the two options to choose from.
 
+![Vote](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/home_toanswer.gif)
+
 For answered questions, the user will be able to see the question, the two options, the number of people who voted for that option, and the user's choice
 
-![Vote](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/vote.gif)
+![Results](https://github.com/amarav/WouldYouRather/blob/master/project/src/images/home_answered.gif)
+
+
 
 ## New Question
 The user can also ask new questions.After clicking on 'New Question,' the application should show a form with the text 'Would You Rather' and
