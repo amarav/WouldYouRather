@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { answerQuestion } from "../actions/questions";
+import { handleSaveAnswer } from "../actions/shared";
 import { Redirect } from 'react-router-dom'
 
 class Poll extends Component {
@@ -21,7 +21,7 @@ class Poll extends Component {
 
   SubmitVote = (event) => {
     const { dispatch } = this.props;
-    dispatch(answerQuestion(this.props.id, this.state.selectedOption));
+    dispatch(handleSaveAnswer(this.props.id, this.state.selectedOption));
   };
 
   render() {

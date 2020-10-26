@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
-import { addNewQuestion } from "../actions/questions";
+import { handleAddQuestion } from "../actions/shared";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
@@ -106,7 +106,7 @@ function mapStateToProps({ authedUser }) {
 function mapDispatchToProps(dispatch) {
   return {
     addQuestion: (optionOnetext, optionTwotext) => {
-      dispatch(addNewQuestion(optionOnetext, optionTwotext));
+      dispatch(handleAddQuestion(optionOnetext, optionTwotext));
     },
   };
 }

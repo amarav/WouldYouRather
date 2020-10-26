@@ -1,7 +1,7 @@
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
+export const SAVE_QUESTION = 'SAVE_QUESTION'
 import {saveQuestion,saveQuestionAnswer} from "../utils/api"
-import {handleInitialData} from "./shared";
 import {hideLoading, showLoading} from 'react-redux-loading'
 
 export function receiveQuestions (questions) {
@@ -9,6 +9,15 @@ export function receiveQuestions (questions) {
     type: RECEIVE_QUESTIONS,
     questions,
   }
+}
+
+export function saveAnswer(authedUser, qid, answer) {
+	return {
+		type: SAVE_QUESTION,
+		authedUser,
+		qid,
+		answer
+	}
 }
 
 export function addQuestion(question) {
@@ -24,7 +33,7 @@ export function answerQuestion (qid,answer) {
     dispatch(showLoading())
     return saveQuestionAnswer({authedUser,qid,answer})
             .then(() => {
-             dispatch(handleInitialData())
+             dispatch(saveAnswer(authedUser, qid, answer))
              dispatch(hideLoading())
              })
   }
@@ -34,9 +43,9 @@ export function addNewQuestion(optionOneText,optionTwoText){
   return(dispatch,getState) => {    
     const {authedUser} = getState()
     dispatch(showLoading())
-    return saveQuestion({ optionOneText, optionTwoText , author:authedUser })
-           .then( () => {
-             dispatch(handleInitialData())
+    return saveQuestion({ optionOneText, optionTwoText })
+           .then( (question) => {
+             dispatch(addQuestion(question))
              dispatch(hideLoading())
             })
   }
