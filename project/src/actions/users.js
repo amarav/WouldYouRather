@@ -25,7 +25,7 @@ export function saveAnswer(authedUser, qid, answer) {
 }
 
 
-export function addUserQuestion (authedUser, qid) {
+export function addUserQuestion ({authedUser}, qid) {
     return {
       type: ADD_USER_QUESTION,
       authedUser,

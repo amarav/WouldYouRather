@@ -48,7 +48,7 @@ export function addNewQuestion(optionOneText,optionTwoText){
     return saveQuestion({ optionOneText, optionTwoText , author:authedUser })
            .then( (question) => {
              dispatch(addQuestion(question))      
-             dispatch(addUserQuestion(authedUser, question.id))
+             dispatch(addUserQuestion(authedUser, question))
              dispatch(hideLoading())
             })
   }
