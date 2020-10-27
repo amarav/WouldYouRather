@@ -1,6 +1,7 @@
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
 export const ADD_QUESTION = 'ADD_QUESTION_TO_USER'
+export const ADD_USER_QUESTION = 'ADD_USER_QUESTION';
 import {saveUser} from "../utils/api"
 import {hideLoading, showLoading} from 'react-redux-loading'
 import { saveQuestionAnswer } from '../utils/api'
@@ -20,16 +21,17 @@ export function saveAnswer(authedUser, qid, answer) {
 		qid,
 		answer
 	}
+  
 }
 
 
-export function addQuestion(authedUser, qid) {
-	return {
-        type: ADD_QUESTION,
-        authedUser,
-        qid
-      }
-}
+export function addUserQuestion (authedUser, qid) {
+    return {
+      type: ADD_USER_QUESTION,
+      authedUser,
+      qid
+    }
+  }
 
 export function handleSaveAnswerUser(qid, answer) {
 	return (dispatch, getState) => {

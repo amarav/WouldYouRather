@@ -10,7 +10,7 @@ export default function questions (state = {}, action) {
     case ADD_QUESTION :
       const {question} = action
       return {
-        [question.id] : question
+        [question.qid] : question
       }
       case SAVE_QUESTION :
                return {
