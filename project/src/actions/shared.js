@@ -28,13 +28,3 @@ export function handleSaveAnswer(qid, answer) {
 }
 
 
-export function handleAddQuestion(optionOneText, optionTwoText) {
-	return (dispatch,getState) => {
-        const {authedUser} = getState()
-		return dispatch(addNewQuestion(optionOneText, optionTwoText))
-			.then((question) => {
-					dispatch(addQuestion(authedUser, question.question.id))
-				}
-			)
-	}
-}
