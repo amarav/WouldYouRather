@@ -35,9 +35,9 @@ class Main extends Component
           <Route exact path='/new' component={NewQuestion} /> 
           <Route path="/questions/:id" component={QuestionDetails}/>
           <Route exact path="/MissingErr" component={MissingErr} />
-          <Route exact path="/Leaderboard" component={Leaderboard} />
-          <Route exact path="/Register" component={Register} />
+          <Route exact path="/Leaderboard" component={Leaderboard} />          
         </LoginCheck>
+          <Route exact path="/Register" component={Register} />
       </Switch> 
     </Fragment>
   );

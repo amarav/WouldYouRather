@@ -1,7 +1,7 @@
 import { getInitialData } from '../utils/api'  
 import {hideLoading, showLoading} from 'react-redux-loading'
-import { receiveUsers, addQuestion, handleSaveAnswerUser } from './users'
-import { receiveQuestions, answerQuestion, addNewQuestion } from './questions'
+import { receiveUsers, handleSaveAnswerUser } from './users'
+import { receiveQuestions, answerQuestion } from './questions'
 
 
 export function handleInitialData () {
