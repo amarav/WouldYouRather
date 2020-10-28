@@ -28,6 +28,7 @@ class Main extends Component
         <Header />
       }
       <Switch>    
+          <Route exact path="/Register" component={Register} />
         <LoginCheck>
           <Route exact path='/' component={Home} />
           <Route exact path='/login' component={Login} /> 
@@ -36,8 +37,7 @@ class Main extends Component
           <Route path="/questions/:id" component={QuestionDetails}/>
           <Route exact path="/MissingErr" component={MissingErr} />
           <Route exact path="/Leaderboard" component={Leaderboard} />          
-        </LoginCheck>
-          <Route exact path="/Register" component={Register} />
+        </LoginCheck>        
       </Switch> 
     </Fragment>
   );
