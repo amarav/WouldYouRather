@@ -1,4 +1,4 @@
-import { RECEIVE_USERS,SAVE_QUESTION, ADD_USER_QUESTION } from '../actions/users'
+import { RECEIVE_USERS,SAVE_QUESTION, ADD_USER_QUESTION } from '../actions/types'
 
 export default function users (state = {}, action) {
   switch(action.type) {
