@@ -3,6 +3,8 @@
 "Would You Rather" is a Udacity React Nanodegree project incorporating React with Redux. The project's goal was to improve to improve the predictability of your application's state, to establish strict rules for getting, listening, and updated the store, and to identify what state should live inside of Redux and what state should live inside of React components.
 Redux to manage your application state. For this application, most of the application’s state is managed by Redux. Component state is used to handle form input fields and controlled components. Otherwise, the rest of the state for the application is controlled by reducers
 
+Watch the live demo [here](https://5fb5300e346c0109f2c0104d--wouldyourather-amarav.netlify.app/)
+
 # How to setup
 
 cd project
